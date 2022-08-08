@@ -1,5 +1,5 @@
 require_relative 'poly_tree_node'
-
+#edit
 class KnightPathFinder
 
     attr_reader :considered, :root_node
