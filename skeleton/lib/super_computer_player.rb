@@ -6,7 +6,7 @@ class SuperComputerPlayer < ComputerPlayer
     node = TicTacToeNode.new(game.board, mark)
 
     possible_moves = node.children
-    debugger
+    #debugger
 
     possible_moves.each do |move|
       return move.prev_move_pos if move.winning_node?(mark)

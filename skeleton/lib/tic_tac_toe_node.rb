@@ -56,7 +56,7 @@ class TicTacToeNode
         if @board.empty?([i_1, i_2])
           #debugger
           child = TicTacToeNode.new(@board.dup, swap_mark, [i_1, i_2])
-          child.board[[i_1, i_2]] = swap_mark
+          child.board[[i_1, i_2]] = self.next_mover_mark
           children << child
         end
       end
