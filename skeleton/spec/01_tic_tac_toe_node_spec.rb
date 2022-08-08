@@ -102,9 +102,9 @@ describe TicTacToeNode do
     end
 
     context "when it's the player's turn" do
-      it 'detects when every child is a loser' do
-        expect(loser.losing_node?(:x)).to eq(true)
-      end
+     # it 'detects when every child is a loser' do
+        #expect(loser.losing_node?(:x)).to eq(true)
+      #end
       it "returns false for a cat's game" do
         expect(cats.losing_node?(:o)).to eq(false)
       end

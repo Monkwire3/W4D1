@@ -18,10 +18,11 @@ class TicTacToeNode
   # end
   
   def losing_node?(evaluator)
-    #debugger
-    #return false if self.board.winner == nil && self.board.over?
+    if self.board.over?
+      return false if self.board.winner == nil
+    end
     return self.board.winner != evaluator && self.board.winner != nil if self.board.over? 
-    return false if self.board.winner == nil if self.children.length == 0
+    #return false if self.board.winner == nil if self.children.length == 0
 
     
     if self.next_mover_mark == evaluator
@@ -53,6 +54,7 @@ class TicTacToeNode
     @board.rows.length.times do |i_1|
       @board.rows.length.times do |i_2|
         if @board.empty?([i_1, i_2])
+          #debugger
           child = TicTacToeNode.new(@board.dup, swap_mark, [i_1, i_2])
           child.board[[i_1, i_2]] = swap_mark
           children << child
