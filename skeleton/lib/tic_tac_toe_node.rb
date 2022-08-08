@@ -11,10 +11,35 @@ class TicTacToeNode
     @next_mover_mark = next_mover_mark
   end
 
+  # def print_board(board)
+  #   board.each do |row|
+  #     p row
+  #   end
+  # end
+  
   def losing_node?(evaluator)
+    #debugger
+    #return false if self.board.winner == nil && self.board.over?
+    return self.board.winner != evaluator && self.board.winner != nil if self.board.over? 
+    return false if self.board.winner == nil if self.children.length == 0
+
+    
+    if self.next_mover_mark == evaluator
+      return self.children.all? {|child| child.losing_node?(evaluator)}
+    else
+      return self.children.any? {|child| child.losing_node?(evaluator)}
+    end
   end
 
   def winning_node?(evaluator)
+    return self.board.winner == evaluator if self.board.over?
+
+    if self.next_mover_mark == evaluator
+      return self.children.any? {|child| child.winning_node?(evaluator)}
+    else
+      return self.children.all? {|child| child.winning_node?(evaluator)}
+    end
+    
   end
 
   def swap_mark
@@ -36,4 +61,8 @@ class TicTacToeNode
     end
   return children
   end
+
+
 end
+
+
